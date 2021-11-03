@@ -3,7 +3,7 @@
  <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
         <div class="container">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="{% url 'index' %}">
             <img src="{% static 'img/logo.png'%}" class="logo" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
@@ -41,15 +41,25 @@
             </ul>
 
             <ul class="navbar-nav ml-auto">
-            <li class="nav-item mr-3">
-                <a class="nav-link" href="register.html">
+            <li 
+                {% if 'register' == request.path %}
+                    class="nav-item active mr-3"
+                {% else %}
+                    class="nav-item mr-3"
+                {% endif %}  
+            >
+                <a class="nav-link" href="{% url 'register' %}">
                 <i class="fas fa-user-plus"></i> Register</a>
             </li>
-            <li class="nav-item mr-3">
-                <a class="nav-link" href="login.html">
-                <i class="fas fa-sign-in-alt"></i>
-
-                Login</a>
+            <li 
+                {% if 'login' == request.path %}
+                    class="nav-item active mr-3"
+                {% else %}
+                    class="nav-item mr-3"
+                {% endif %}  
+            >
+                <a class="nav-link" href="{% url 'login' %}">
+                <i class="fas fa-sign-in-alt"></i>Login</a>
             </li>
             </ul>
         </div>
