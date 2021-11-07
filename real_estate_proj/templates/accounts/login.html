@@ -13,6 +13,8 @@
                             </h4>
                         </div>
                         <div class="card-body">
+                         <!-- Alerts -->
+                            {% include 'partials/_alerts.html' %}
                             <form action="{% url 'login' %}" Method="POST">
                                 {% csrf_token %}
                                 <div class="form-group">
